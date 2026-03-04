@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="shortcut icon" href="/images/ensibs_logo.png">
+
+    <script src="image_liens.js" defer></script>
+    
+    <link rel="stylesheet" href="/base_style.css">
+    <link rel="stylesheet" href="style.css">
+
+    <title>Projets</title>
+</head>
+
+<body>
+
+    <div class="main">
+
+        <div class="nav">
+
+            <h3>Navigation</h3>
+
+            <ul id="nav-list">
+                <li>
+                    <a href="/index.html">Acceuil</a>
+                </li>
+                <li>
+                    <a href="/pages/ensibs/page.html">ENSIBS</a>
+                </li>
+                <li>
+                    <a href="page.html">> Projets</a>
+                    <ul>
+                        <li>
+                            <a href="/pages/projets/page.html#tags">Tags</a>
+                        </li>
+                        <li>
+                            <a href="/pages/projets/page.html#minify">Minify</a>
+                        </li>
+                        <li>
+                            <a href="/pages/projets/page.html#inventory">Inventory</a>
+                        </li>
+                        <li>
+                            <a href="/pages/projets/page.html#instances">Instances</a>
+                        </li>
+                        <li>
+                            <a href="/pages/projets/page.html#heat">Heat</a>
+                        </li>
+                        <li>
+                            <a href="/pages/projets/page.html#softwaretunel">Software Tunel</a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="/pages/robotique/page.html">Robotique</a>
+                </li>
+            </ul>
+
+        </div>
+
+        <div class="content">
+
+            <img src="/images/ensibs_logo.png" alt="Logo ENSIBS" width="149px" height="61px">
+
+            <h1>Introduction</h1>
+
+            <div class="sub-content-indent">
+                <p>
+                    Retrouvez ici une liste de projets que je mène dans mon temps libre.
+                    <br><br>
+                    Je m'interrèse grandement à la création de logiciels et d'utilitaires. 
+                    <br>
+                    Ces programmes me servent concrètement dans d'autres projets plus larges comme mon pricipale actuellement : Une application web avec une interface sous la forme d'une application sur mobile
+                </p>
+            </div>
+
+            <h1>Liste</h1>
+
+                <div class="sub-content-indent">
+
+                    <div class="project-box" id="tags">
+
+                        <h2>Tags <img src="/images/icons/lua.png" alt="Lua"> | <img src="/images/icons/love2d.png" alt="Löve2D"></h2>
+                        <p>Septembre 2025</p>
+                        <div class="project-presentation">
+
+                            <div class="project-img">
+                                <img src="images/tags.png" alt="" width="720" height="343">
+                            </div>
+
+                            <div class="project-desc">
+                                <p>
+                                    Logiciel simple qui permet de gérer une hiérarchie de tags et de stocker cette hiérarchie dans une base de donnée SQLite.
+                                    (Dans l'exemple à gauche, une classification d'aliments)
+                                    <br> <br>
+                                    Écrit en <a href="https://www.lua.org/manual/5.1/manual.html">Lua</a> et basé sur le moteur open source <a href="https://love2d.org/">Löve2D</a> (v.11.5)
+                                </p>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <br>
+
+                    <div class="project-box" id="minify">
+
+                        <h2>Minify <img src="/images/icons/python.png" alt="Python"></h2>
+                        <p>Février 2026 - aujourd'hui</p>
+
+                        <div class="project-presentation">
+
+                            <div class="project-img">
+                                <img src="images/minify.png" alt="" width="442" height="403">
+                            </div>
+
+                            <div class="project-desc">
+                                <p>
+                                    Librairie python qui cherche à réduire la taille d'un fichier de code en supprimant :
+                                    les espaces non nécessaire, les commentaires...
+                                    <br> <br>
+                                    
+                                </p>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <br>
+
+                    <div class="project-box" id="inventory">
+
+                        <h2>Inventory <img src="/images/icons/python.png" alt="Python"></h2>
+                        <p>Août 2025 - Octobre 2025</p>
+
+                        <div class="project-presentation">
+
+                            <div class="project-img">
+                                <img src="images/inventory.png" alt="" width="486" height="332">
+                            </div>
+
+                            <div class="project-desc">
+                                <p>
+                                    Programme en ligne de commande, à partir d'un codebar, trouve des informations sur le produit : nom, image, qualités nutritives...
+                                    <br> <br>
+                                    Utilise les données présente sur <a href="https://world.openfoodfacts.org/">OpenFoodFacts</a>
+                                    <br> <br>
+                                    (Exemple avec un bocale d'épice)
+                                </p>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <br>
+
+                    <div class="project-box" id="instances">
+
+                        <h2>Instances <img src="/images/icons/lua.png" alt="Lua"> | <img src="/images/icons/love2d.png" alt="Löve2D"><img src="/images/icons/solar2d.png" alt="Solar2D"></h2>
+                        <p>Mars 2025 - aujourd'hui</p>
+
+                        <div class="project-presentation">
+
+                            <div class="project-img">
+                                <img src="images/instances.png" alt="" width="486" height="332">
+                            </div>
+
+                            <div class="project-desc">
+                                <p>
+                                    Système orienté objet qui facilite la création d'environement 3D et 2D.
+                                    <br> <br>
+                                    Existe en deux version, compatibles respectivement avec <a href="https://love2d.org/">Löve2D</a> (v.11.5) et <a href="https://solar2d.com/">Solar2D</a>.
+                                    Cela permet de créer un seul fichier qui peut être utilisé par les deux moteurs par l'intermédiaire du système Instances.
+                                    <br> <br>
+                                    (Exemple avec une image, un text et un modèle 3D)
+                                </p>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <br>
+
+                    <div class="project-box" id="heat">
+
+                        <h2>Heat <img src="/images/icons/lua.png" alt="Lua"> | <img src="/images/icons/love2d.png" alt="Löve2D"><img src="/images/icons/solar2d.png" alt="Solar2D"></h2>
+                        <p>Août 2025 - aujourd'hui</p>
+
+                        <div class="project-presentation">
+
+                            <div class="project-img">
+                                <img src="images/heat.png" alt="" width="385" height="415">
+                            </div>
+
+                            <div class="project-desc">
+                                <p>
+                                    Application PC et mobile qui sert de centre à partir du quel il est possible d'accéder à des modules sans avoir besoin d'installer d'autres applications.
+                                    <br> <br>
+                                    Basé sur <a href="https://love2d.org/">Löve2D</a> (v.11.5) et en cours de migration vers <a href="https://solar2d.com/">Solar2D</a> avec le système Instances.
+                                </p>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <br>
+
+                    <div class="project-box" id="softwaretunel">
+
+                        <h2>Software Tunel <img src="/images/icons/lua.png" alt="Lua"> | <img src="/images/icons/love2d.png" alt="Löve2D"><img src="/images/icons/solar2d.png" alt="Solar2D"></h2>
+                        <p>Juillet 2025 - aujourd'hui</p>
+
+                        <div class="project-presentation">
+
+                            <div class="project-img">
+                                <img src="images/softwaretunel.png" alt="" width="501" height="375">
+                            </div>
+
+                            <div class="project-desc">
+                                <p>
+                                    Application PC qui permet de gérer un serveur à distance en récupérant le logiciel cible et en renvoyant une version modifiée. 
+                                    <br> <br>
+                                    Basé sur <a href="https://love2d.org/">Löve2D</a> (v.11.5) et en cours de migration vers <a href="https://solar2d.com/">Solar2D</a> avec le système Instances et une apporche modulaire comme l'application Heat.
+                                </p>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <footer>
+
+        <div class="footer-box">
+            <p>Liens</p>
+
+            <hr>
+
+            <div class="liens"> 
+                <a href="mailto:delalleau.e2502221@etud.univ-ubs.fr" target="_blank">
+                    <img src="/images/icons/mail.png" alt="Icon mail">
+                    Contact
+                </a>
+                &nbsp • &nbsp
+                <a href="https://github.com/Noda81" target="_blank">
+                    <img src="/images/icons/code.png" alt="Icon code">
+                    Github
+                </a>
+                &nbsp • &nbsp
+                <a href="https://www-ensibs.univ-ubs.fr/fr/index.html" target="_blank">
+                    <img src="/images/icons/ecole.png" alt="Icon école">
+                    ENSIBS
+                </a>
+            </div>
+
+        </div>
+
+        <div class="sources">
+
+            Sources :
+
+            <a href="https://iconshelf.com/" target="_blank">IconShelf</a>
+        </div>
+
+    </footer>
+
+</body>
+</html>

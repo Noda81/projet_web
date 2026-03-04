@@ -1,0 +1,70 @@
+.galerie {
+    margin: auto;
+    text-align: center;
+    /*border: 2px dotted;*/
+}
+
+#image-galerie {
+    border: 2px rgb(97, 97, 97) solid;
+}
+
+img {
+    vertical-align: middle;
+}
+
+#image-titre {
+    text-align: center;
+    font-size: 25px;
+    font-weight: bold;
+    text-decoration: underline;
+    width: 50%;
+    margin-left: 25%;
+    padding-top: 7px;
+    padding-bottom: 7px;
+}
+
+
+#image-desc {
+    text-align: center;
+    border: 1px rgb(97, 97, 97) solid;
+    width: 50%;
+    margin-left: 25%;
+    padding-top: 7px;
+    padding-bottom: 7px;
+}
+
+button {
+    cursor: pointer;
+}
+
+.button-galerie-gauche {
+    margin-right: 10px;
+    font-size: 15px;
+}
+
+.button-galerie-gauche:hover {
+    position: relative;
+    right: 10px;
+}
+
+.button-galerie-droit {
+    margin-left: 10px;
+    font-size: 15px;
+}
+
+.button-galerie-droit:hover {
+    position: relative;
+    left: 10px;
+}
+
+#download {
+    padding: 10px;
+    font-size: 24px;
+    color: rgb(0, 0, 0);
+    background-color: rgb(144, 228, 18);
+    border: 2px rgb(71, 119, 0) solid;
+}
+
+#download:hover{
+    background-color: rgb(153, 255, 0);
+}

@@ -1,0 +1,90 @@
+/* Général */
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+h1 {
+    color: #419932;
+    border-bottom: 3px #86b67e solid;
+    border-left: 3px #86b67e solid;
+    padding-left: 10px;
+}
+
+p, em, strong, li {
+    color: #60616d;
+}
+
+
+/* Contenu principal */
+.main {
+    display: flex;
+    flex: 1;
+    margin: 20px auto;
+}
+
+.content {
+    width: 93%;
+    padding: 20px;
+}
+
+.sub-content-indent {
+    padding-left: 2.5%;
+    width: 95%;
+}
+
+.nav {
+    background-color: #ebebeb; /*e2e2e2*/
+    width: 150px;
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+}
+
+#nav-list {
+    list-style-type: none;
+    margin-left: -30px;
+
+    :any-link {
+        color: #805a5a;
+    }
+
+    a:hover {
+        font-size: 20px;
+        font-weight: bold;
+    }
+
+}
+
+/* Footer */
+footer {
+    font-size: 12px;
+    color: #8d8d8d;
+
+    :any-link {
+        color: #8d8d8d;
+    }
+}
+
+.footer-box {
+    background-color: #ebebeb;
+    text-align: center;
+    padding-left: 5%;
+    padding-right: 5%;
+    padding-top: 5px;
+    padding-bottom: 15px;
+}
+
+.liens {
+    padding-top: 5px;
+    font-size: 15px;
+
+    img {
+        vertical-align: middle;
+    }
+
+}
+
+.sources {
+    padding-top: 10px;
+}

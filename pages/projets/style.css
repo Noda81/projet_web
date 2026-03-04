@@ -1,0 +1,28 @@
+.project-box {
+    background-color: rgb(245, 245, 245);
+    border: 1px #555555 solid;
+    padding: 7px;
+}
+
+/*
+h2 {
+    border-bottom: 1px grey solid;
+}
+*/
+
+img {
+    vertical-align: middle;
+}
+
+.project-presentation {
+    display: flex;
+    align-items: center;
+}
+
+.project-desc {
+    padding: 5px;
+}
+
+.project-img {
+    padding: 5px;
+}

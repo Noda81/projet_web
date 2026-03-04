@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="shortcut icon" href="/images/ensibs_logo.png">
+
+    <script src="/scripts/navigation.js" defer></script>
+    <script src="galerie.js" defer></script>
+    
+    <link rel="stylesheet" href="/base_style.css">
+    <link rel="stylesheet" href="style.css">
+
+    <title>Robotique</title>
+</head>
+
+<body>
+
+    <div class="main">
+
+        <div class="nav">
+
+            <h3>Navigation</h3>
+
+            <ul id="nav-list">
+                <li>
+                    <a href="/index.html">Acceuil</a>
+                </li>
+                <li>
+                    <a href="/pages/ensibs/page.html">ENSIBS</a>
+                </li>
+                <li>
+                    <a href="/pages/projets/page.html">Projets</a>
+                </li>
+                <li>
+                    <a href="page.html">> Robotique</a>
+                </li>
+            </ul>
+
+        </div>
+
+        <div class="content">
+
+            <img src="/images/ensibs_logo.png" alt="Logo ENSIBS" width="149px" height="61px">
+
+            <h1>Introduction</h1>
+
+            <div class="sub-content-indent">
+
+                <p>
+                    Lors de cette première année, nous suivons un cours centré autours de la robotique et la <strong>conception d'un robot</strong>
+                    capable de se déplacer vers une source de lumière tout en évitant des obstacles.
+                </p>
+
+            </div>
+
+            <h1>Galerie</h1>
+
+            <div class="sub-content-indent">
+
+                <p>
+                    Découvrez les images qui illustrent notre travail dans le cadre de cette unitée d'enseignement :
+                </p>
+
+                <p id="image-titre">
+                    [TITRE DE L'IMAGE]
+                </p>
+
+                <div class="galerie">
+
+                    <button class="button-galerie-gauche" onclick="prev()">⭠ Précedent</button>
+
+                    <img id="image-galerie" src="images/robot_plat.png" alt="">
+
+                    <button class="button-galerie-droit" onclick="next()">Suivant ⭢</button>
+
+                </div>
+
+                <p id="image-desc">
+                    [DESCRIPTION DE L'IMAGE]
+                </p>
+                
+            </div>
+
+            <h1>Code de pilotage</h1>
+
+            <div class="sub-content-indent">
+
+                <p>
+                    Téléchargez le code complet qui contrôle notre robot :
+                </p>
+
+                <br>
+
+                <a href="code.nxc" id="download">
+                    Télecharger
+                    <img src="/images/icons/download.png" alt="">
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <footer>
+
+        <div class="footer-box">
+            <p>Liens</p>
+
+            <hr>
+
+            <div class="liens"> 
+                <a href="mailto:delalleau.e2502221@etud.univ-ubs.fr" target="_blank">
+                    <img src="/images/icons/mail.png" alt="Icon mail">
+                    Contact
+                </a>
+                &nbsp • &nbsp
+                <a href="https://github.com/Noda81" target="_blank">
+                    <img src="/images/icons/code.png" alt="Icon code">
+                    Github
+                </a>
+                &nbsp • &nbsp
+                <a href="https://www-ensibs.univ-ubs.fr/fr/index.html" target="_blank">
+                    <img src="/images/icons/ecole.png" alt="Icon école">
+                    ENSIBS
+                </a>
+            </div>
+
+        </div>
+
+        <div class="sources">
+
+            Sources :
+
+            <a href="https://iconshelf.com/" target="_blank">IconShelf</a>
+        </div>
+
+    </footer>
+
+</body>
+</html>

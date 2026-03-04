@@ -1,0 +1,135 @@
+/*
+
+  code.nxc
+  05/02/2026
+  
+*/
+
+// Constantes
+
+#define pi 3.14159
+
+#define MOT_1 OUT_A
+#define MOT_2 OUT_C
+#define MOTS OUT_AC
+
+#define POWER 50
+#define MOV_DUR 5000
+#define PAUSE 500
+
+#define WHEEL_COEF 0.069
+#define WHEEL_RADIUS 4.075
+
+#define ROBOT_RADIUS 8.5
+
+inline void pause() {
+
+       // Pause
+       TextOut(1, LCD_LINE1, "Pause", true);
+       Off(MOTS);
+       Wait(PAUSE);
+
+}
+
+inline void musique() {
+
+       int q = 100;   // noire
+       int h = 200;   // blanche
+
+       // Phrase 1
+       PlayTone(TONE_CS5, q);  Wait(q);
+       PlayTone(TONE_FS5, q);  Wait(q);
+       PlayTone(TONE_GS5, q); Wait(q);
+       PlayTone(TONE_CS6, q);  Wait(q);
+       PlayTone(TONE_F6, q);  Wait(q);
+
+       Wait(1000);
+
+       // Phrase 2
+      PlayTone(TONE_AS5, q); Wait(h);
+      PlayTone(TONE_A5, q);  Wait(q);
+      PlayTone(TONE_G5, q); Wait(q);
+      PlayTone(TONE_F5, q);  Wait(q);
+
+      // Descente finale
+       PlayTone(TONE_D6, q); Wait(q);
+       PlayTone(TONE_C6, h);  Wait(h);
+
+}
+
+/*
+inline void turn(int angle) {
+
+       pause();
+
+       ResetTachoCount(MOTS);
+       OnFwdSyncEx(MOTS,25, 100, RESET_NONE);
+       
+       while ((abs(MotorTachoCount(MOT_1)) + abs(MotorTachoCount(MOT_2)))/2 <= angle*2) {
+          TextOut(1, LCD_LINE1, StrCat(NumToStr(MotorTachoCount(MOT_1)), "   ", NumToStr(MotorTachoCount(MOT_2))), true);
+       }
+       
+       pause();
+}
+*/
+
+/*
+  Calcul la distance en centimètres à partir
+  du nombre de rotation des moteurs.
+  
+  Args : (int) MOTORS_IDS
+  Return : (float) distance
+*/
+inline float distance_from_rot(int MOTORS_IDS) {
+       return (2*pi*WHEEL_RADIUS*(MotorRotationCount(MOTORS_IDS)/360));
+}
+
+inline void turn(int angle) {
+       
+       OnFwdSyncEx(MOTS, POWER, 100, RESET_ALL);
+
+       until (abs(MotorRotationCount(MOT_1)) >= (angle*ROBOT_RADIUS) / WHEEL_RADIUS);
+       
+       Off(MOTS);
+}
+
+/*
+  Avance de x centimètres en utilisant
+  la synchronisation moteurs
+  
+  Args : (float) distance
+  Return : void
+*/
+
+inline float distance_from_rot(int MOTORS_IDS) {
+       return (2*pi*WHEEL_RADIUS*(MotorRotationCount(MOTORS_IDS)/360));
+}
+
+inline void sync_cinquante() {
+
+     OnFwdSyncEx(MOTS, POWER, 0, RESET_ALL);
+
+     until (distance_from_rot(MOT_1) >= 50);
+
+     pause();
+}
+
+/*
+  Fait suivre le périmètre d'un carré
+  de 50 centimètre de côté par le robot
+*/
+task square() {
+     repeat(8) {
+               TextOut(1, LCD_LINE1, "Avance", true);
+               ResetRotationCount(MOT_1);
+               sync_cinquante();
+               TextOut(1, LCD_LINE1, "Tourne", true);
+               turn(90);
+               pause();
+     };
+}
+
+task main() {
+    Precedes(square);
+    musique();
+}
