@@ -1,3 +1,5 @@
+/* Galerie */
+
 .galerie {
     margin: auto;
     text-align: center;
@@ -23,7 +25,6 @@ img {
     padding-bottom: 7px;
 }
 
-
 #image-desc {
     text-align: center;
     border: 1px rgb(97, 97, 97) solid;
@@ -32,6 +33,7 @@ img {
     padding-top: 7px;
     padding-bottom: 7px;
 }
+
 
 button {
     cursor: pointer;
@@ -57,6 +59,102 @@ button {
     left: 10px;
 }
 
+/* Cahier des charges */
+
+table, td {
+    border: 2px solid black;
+    border-collapse: collapse;
+    padding: 5px;
+
+    text-align: center;
+    padding: 10px;
+
+}
+
+.table-title {
+    background-color: rgb(207, 207, 207);
+    font-weight: bolder;
+    color: rgb(68, 68, 68);
+}
+
+.images-collection {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    align-items: center;
+
+    gap: 20px;
+
+    div {
+        border: #3a3a3a solid 1px;
+    }
+
+    p {
+        text-align: center;
+        font-style: italic;
+    }
+
+}
+
+/* Equipe */
+
+#team-list {
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    #team-tags {
+
+        text-align: right;
+        font-weight: bold;
+        padding-right: 5px;
+        padding-left: 25px;
+    
+        border-left: 2px dotted rgb(114, 114, 114);
+
+        #tag-0 {
+            color: rgb(21, 201, 201);
+            text-shadow: 3px 3px 5px rgba(21, 201, 201, 0.5);
+        }
+
+        #tag-1 {
+            color: rgb(129, 211, 113);
+            text-shadow: 3px 3px 5px rgb(129, 211, 113);
+        }
+
+        #tag-2 {
+            color: rgb(233, 223, 138);
+            text-shadow: 3px 3px 5px rgba(233, 223, 138)
+        }
+
+        #tag-3 {
+            color: rgb(189, 44, 0);
+            text-shadow: 3px 3px 5px rgba(189, 44, 0, 0.5);
+        }
+
+    }
+
+    #team-names {
+        padding-left: 5px;
+        padding-right: 25px;
+    
+        border-right: 2px dotted rgb(114, 114, 114);
+
+        :any-link {
+            color: #3a3a3a;
+        }
+
+        :any-link:hover {
+            text-shadow: 0px 0px 3px rgb(114, 114, 114);
+        }
+
+    }
+
+}
+
+/* Code */
+
 #download {
     padding: 10px;
     font-size: 24px;
@@ -67,4 +165,16 @@ button {
 
 #download:hover{
     background-color: rgb(153, 255, 0);
+}
+
+#github {
+    padding: 10px;
+    font-size: 24px;
+    color: rgb(0, 0, 0);
+    background-color: rgb(180, 180, 180);
+    border: 2px rgb(104, 104, 104) solid;
+}
+
+#github:hover{
+    background-color: rgb(202, 202, 202);
 }

@@ -2,6 +2,7 @@
 
 body {
     font-family: Arial, Helvetica, sans-serif;
+    /*background-image: url("images/IMG_20260223_132154.jpg");*/
 }
 
 h1 {
@@ -31,6 +32,12 @@ p, em, strong, li {
 .sub-content-indent {
     padding-left: 2.5%;
     width: 95%;
+}
+
+.sub-content-centered {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
 }
 
 .nav {

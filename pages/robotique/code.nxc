@@ -1,27 +1,75 @@
 /*
 
   code.nxc
-  05/02/2026
+  05/03/2026
+
+  Issues : turn, didn't work lastly
   
 */
 
-// Constantes
+/// Constantes
 
-#define pi 3.14159
-
-#define MOT_1 OUT_A
-#define MOT_2 OUT_C
-#define MOTS OUT_AC
+#define pi 3.141592653589793
 
 #define POWER 50
 #define MOV_DUR 5000
 #define PAUSE 500
 
-#define WHEEL_COEF 0.069
-#define WHEEL_RADIUS 4.075
+#define WHEEL_RADIUS 4.1395
+#define ROBOT_RADIUS 8.547
 
-#define ROBOT_RADIUS 8.5
+// Sensors & Actors
 
+#define MOT_1 OUT_A
+#define MOT_2 OUT_C
+#define MOTS OUT_AC
+
+#define IN_LIGHT_LEFT IN_4
+#define IN_LIGHT_RIGHT IN_1
+#define IN_US IN_2
+#define IN_Touch IN_3
+
+/// Fonctions
+
+/*
+       Debug avec des sons
+*/
+inline void debug(string type) {
+       if (type == "error") {
+              PlayTone(TONE_A5, 500);
+              SetSensorType(IN_LIGHT_LEFT, IN_TYPE_LIGHT_ACTIVE);
+              SetSensorType(IN_LIGHT_RIGHT, IN_TYPE_LIGHT_ACTIVE);
+              Wait(500);
+              SetSensorType(IN_LIGHT_LEFT, IN_TYPE_LIGHT_INACTIVE);
+              SetSensorType(IN_LIGHT_RIGHT, IN_TYPE_LIGHT_INACTIVE);
+       } else if (type == "warn") {
+              PlayTone(TONE_B5, 250);
+       } else {
+              PlayTone(TONE_C5, 100);
+       }
+}
+
+/*
+       Initilization des sorties capteurs
+*/
+inline void init_sensors() {
+
+       // Light right
+       SetSensorType(IN_LIGHT_RIGHT, SENSOR_TYPE_LIGHT_INACTIVE);
+       SetSensorMode(IN_LIGHT_RIGHT, SENSOR_MODE_RAW);
+
+       // Light left
+       SetSensorType(IN_LIGHT_LEFT, SENSOR_TYPE_LIGHT_INACTIVE);
+       SetSensorMode(IN_LIGHT_LEFT, SENSOR_MODE_RAW);
+
+       // Ultrasound
+       SetSensorLowspeed(IN_US);
+
+       // Touch
+       SetSensorTouch(IN_Touch);
+
+}
+// Pour arreter le robot et afficher qu'il s'arrete
 inline void pause() {
 
        // Pause
@@ -31,7 +79,7 @@ inline void pause() {
 
 }
 
-inline void musique() {
+inline void clash() { //fait du bruit
 
        int q = 100;   // noire
        int h = 200;   // blanche
@@ -46,35 +94,19 @@ inline void musique() {
        Wait(1000);
 
        // Phrase 2
-      PlayTone(TONE_AS5, q); Wait(h);
-      PlayTone(TONE_A5, q);  Wait(q);
-      PlayTone(TONE_G5, q); Wait(q);
-      PlayTone(TONE_F5, q);  Wait(q);
+       PlayTone(TONE_AS5, q); Wait(h);
+       PlayTone(TONE_A5, q);  Wait(q);
+       PlayTone(TONE_G5, q); Wait(q);
+       PlayTone(TONE_F5, q);  Wait(q);
 
-      // Descente finale
+       // Descente finale
        PlayTone(TONE_D6, q); Wait(q);
        PlayTone(TONE_C6, h);  Wait(h);
 
 }
 
 /*
-inline void turn(int angle) {
-
-       pause();
-
-       ResetTachoCount(MOTS);
-       OnFwdSyncEx(MOTS,25, 100, RESET_NONE);
-       
-       while ((abs(MotorTachoCount(MOT_1)) + abs(MotorTachoCount(MOT_2)))/2 <= angle*2) {
-          TextOut(1, LCD_LINE1, StrCat(NumToStr(MotorTachoCount(MOT_1)), "   ", NumToStr(MotorTachoCount(MOT_2))), true);
-       }
-       
-       pause();
-}
-*/
-
-/*
-  Calcul la distance en centimètres à partir
+  Calcul la distance en centimetres a partir
   du nombre de rotation des moteurs.
   
   Args : (int) MOTORS_IDS
@@ -85,51 +117,152 @@ inline float distance_from_rot(int MOTORS_IDS) {
 }
 
 inline void turn(int angle) {
+
+       ResetRotationCount(MOTS);
        
-       OnFwdSyncEx(MOTS, POWER, 100, RESET_ALL);
+       //OnFwdSyncEx(MOTS, POWER, 100, RESET_ALL);
+
+       OnFwdSyncPID(MOTS, POWER, 100,30, 50, 90);
 
        until (abs(MotorRotationCount(MOT_1)) >= (angle*ROBOT_RADIUS) / WHEEL_RADIUS);
+       //while (abs(MotorRotationCount(MOT_1)) < 180{//(angle*ROBOT_RADIUS) / WHEEL_RADIUS) {
+       //      TextOut(1, LCD_LINE1, StrCat(NumToStr(MotorRotationCount(MOT_1)), "   ", NumToStr((angle*ROBOT_RADIUS) / WHEEL_RADIUS)), true);
+       //}
        
        Off(MOTS);
 }
 
 /*
-  Avance de x centimètres en utilisant
+  Avance de x centimetres en utilisant
   la synchronisation moteurs
   
   Args : (float) distance
   Return : void
 */
+inline void sync_cm(float distance) {
 
-inline float distance_from_rot(int MOTORS_IDS) {
-       return (2*pi*WHEEL_RADIUS*(MotorRotationCount(MOTORS_IDS)/360));
+       //ResetRotationCount(MOTS);
+
+       OnFwdSyncEx(MOTS, POWER, 0, RESET_ALL);
+
+       until (distance_from_rot(MOT_1) >= distance);
+
+       Off(MOTS);
 }
 
 inline void sync_cinquante() {
 
+     //OnFwdSyncPID(MOTS, POWER, 0, 30, 50, 90);
+
      OnFwdSyncEx(MOTS, POWER, 0, RESET_ALL);
 
-     until (distance_from_rot(MOT_1) >= 50);
+     until (distance_from_rot(MOT_1) >= 50.0);
 
      pause();
 }
 
 /*
-  Fait suivre le périmètre d'un carré
-  de 50 centimètre de côté par le robot
+  Trouve le capteur qui observe le plus
+  de lumiere
+
+  Args : None
+  Returns :
+       "gauche" || "droite" || "egal" || "nul"
+*/
+inline string get_to_light() {
+
+       int light_left = Sensor(IN_LIGHT_LEFT);
+       int light_right = Sensor(IN_LIGHT_RIGHT);
+
+       if (light_left > light_right) {
+              return "gauche";
+       } else if (light_right > light_left) {
+              return "droite";
+       } else if (light_right == 0 && light_left == 0) {
+              return "nul";
+       } else {
+              return "egal";
+       }
+
+}
+
+/*
+  Fait suivre le perimetre d'un carre
+  de 50 centimetre de cote par le robot
 */
 task square() {
-     repeat(8) {
-               TextOut(1, LCD_LINE1, "Avance", true);
-               ResetRotationCount(MOT_1);
-               sync_cinquante();
-               TextOut(1, LCD_LINE1, "Tourne", true);
-               turn(90);
-               pause();
+     repeat(4) {
+
+              TextOut(1, LCD_LINE1, "Avance", true);
+              ResetRotationCount(MOTS);
+              sync_cinquante();
+
+              TextOut(1, LCD_LINE1, "Pause", true);
+              OffEx(MOTS, RESET_NONE);
+              Wait(PAUSE);
+
+              debug("error");
+
+              TextOut(1, LCD_LINE1, "Tourne", true);
+              ResetRotationCount(MOTS);
+              turn(85);
+
+              TextOut(1, LCD_LINE1, "Pause", true);
+              OffEx(MOTS, RESET_NONE);
+              Wait(PAUSE);
+
      };
 }
 
+/*
+       Tourne pour egaliser la quantité de lumière
+       recue par le capteur. 
+       AArgs : None
+       Return : None
+
+*/
+
+task follow_light(){
+       
+       if(get_to_light()=="gauche"){
+              //faire tourner a gauche jusqu'a ce que les niveaux soient egaux
+              OnFwdSyncPID(MOTS, POWER, -100, 30, 50, 90);
+
+              until (get_to_light()=="egal");
+
+       }
+       else if(get_to_light()=="droite"){
+             //faire tourner a droite jusqu'a ce que les niveaux soient egaux  
+              OnFwdSyncPID(MOTS, POWER, 100, 30, 50, 90);
+
+              until (get_to_light()=="egal");             
+       }
+       else if(get_to_light()=="null"){
+              //cas ou le robot ne capte rien, on tourne jusqu'à capter
+              OnFwdSyncPID(MOTS, POWER, 100, 30, 50, 90);
+
+              until (get_to_light()=="egal");
+       }
+       else{
+              //nous sommes en face, on avance
+              OnFwdSyncPID(MOTS, POWER, 0, 30, 50, 90);
+              
+       }
+       
+}
+
 task main() {
-    Precedes(square);
-    musique();
+
+       init_sensors();
+
+       //PlayToneEx(DO*O6,245,VOL,FALSE); Wait(500);
+
+       //Precedes(sync);
+       //debug("error");
+       Precedes(square);
+
+       //clash();
+
+
+
 }
