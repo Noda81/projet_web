@@ -1,0 +1,28 @@
+/* Liste */
+
+button {
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.liste-sites {
+    padding: 10px;
+}
+
+.liste-bouttons {
+
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+
+    button {
+        font-size: 18px;
+    }
+
+}
+
+#site-web-view {
+    margin: 10px;
+    width: 100%;
+    height: 500px;
+}

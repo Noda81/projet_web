@@ -1,0 +1,68 @@
+img {
+    vertical-align: middle;
+}
+
+.presentation {
+
+    display: flex;
+
+    p {
+        vertical-align: bottom;
+    }
+
+    img {
+        width: 128px;
+        height: 128px;
+        margin-right: 25px;
+
+        border: 3px #86b67e double;
+        border-radius: 100%;
+    }
+
+}
+
+.timeline {
+
+    /*background-image: url("images/ensibs_logo.png");*/
+
+    padding-top: 10px;
+    padding-bottom: 10px;
+
+    display: flex;
+    justify-content: center;
+    gap: 2%;
+
+}
+
+.timeline-part-titre {
+
+    border: 1px solid black;
+    border-top-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+
+    text-align: center;
+
+    font-weight: bold;
+}
+
+#timeline-current {
+    background-color: #b3d1ae;
+}
+
+#timeline-current:hover {
+    background-color: #83a07e;
+}
+
+.timeline-part:hover .timeline-part-titre{
+    background-color: #c7c7c7;
+}
+
+.timeline-part:hover .timeline-part-content {
+    margin-top: 10px;
+    opacity: 1;
+}
+
+.timeline-part-content {
+    opacity: 0;
+    text-align: center;
+}
